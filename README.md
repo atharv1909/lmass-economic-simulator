@@ -12,6 +12,8 @@ The interactive policy testing dashboard is deployed on Vercel:
 
 **Live URL:**  
 https://economic-shaper.vercel.app/
+or
+https://lmass.vercel.app/
 
 The dashboard supports:
 
