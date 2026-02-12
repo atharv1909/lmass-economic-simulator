@@ -1,7 +1,7 @@
  # 🌍 Economic Shaper
 ## Multi-Agent Strategic Economic Simulator Under Supply Shocks
----
-A real-time, interactive policy testing platform for simulating strategic firm behavior under resource shocks such as lithium supply disruptions.
+
+#### A real-time, interactive policy testing platform for simulating strategic firm behavior under resource shocks such as lithium supply disruptions.
 ---
 
 ## 🌐 Live Deployment
