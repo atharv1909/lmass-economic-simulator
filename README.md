@@ -60,7 +60,7 @@ Runs a full economic simulation under configurable shock and policy parameters.
   }
 }
 ```
-📊 Simulation Response Structure
+## 📊 Simulation Response Structure
 
 The API returns a JSON object containing:
 
@@ -84,7 +84,7 @@ config → Scenario configuration
 
 debug → Debug metadata
 
-🧠 Key Features
+## 🧠 Key Features
 
 Partial observability with noisy supply signals
 
@@ -108,7 +108,7 @@ FastAPI REST endpoints
 
 CORS middleware is enabled to allow frontend browser-based API calls.
 
-⚡ Performance
+## ⚡ Performance
 
 36-period rollout: <1 second
 
@@ -118,7 +118,7 @@ Memory usage: <500MB
 
 Fully compatible with Kaggle + Render
 
-📌 Project Purpose
+## 📌 Project Purpose
 
 This simulator enables:
 
