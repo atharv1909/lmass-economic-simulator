@@ -1,131 +1,138 @@
-# LMASS: Multi-Agent Strategic Economic Simulator Under Supply Shocks
-
-A learning-based multi-agent economic simulator designed to model strategic firm behavior under supply shocks such as lithium crises in EV supply chains.
-
-This system enables policy testing, cartel detection, and stability optimization through adaptive agent interactions and belief inference.
+A real-time, multi-agent economic policy sandbox for simulating supply shocks and strategic firm behavior.
 
 ---
 
-## 🌍 Live Backend Deployment
+## 🌐 Live Deployment
 
-The FastAPI backend is deployed on Render:
+### 🔗 Frontend (Dashboard)
 
-**Base URL:**
+The interactive policy testing dashboard is deployed on Vercel:
 
+**Live URL:**  
+https://economic-shaper.vercel.app/
+
+The dashboard supports:
+
+- 🎛 Demo Mode (offline JSON simulations)
+- 🌍 Live Mode (real-time backend simulations)
+- 📊 Interactive charts for prices, production, inventory, sales
+- 🧠 Cartel detection visualization
+- ⚖ Stability and welfare metrics
+- 🧩 Configurable shock & policy parameters
+
+---
+
+### 🖥 Backend (Simulation Engine)
+
+The FastAPI backend powering the simulations is deployed on Render:
+
+**API Base URL:**  
 https://lmass-economic-simulator.onrender.com
 
----
+Available endpoints:
 
-## 🚀 Available Endpoints
-
-### 1️⃣ Health Check
-`GET /health`
-
-Returns system status and version.
-
-Example:
-https://lmass-economic-simulator.onrender.com/health
-
+- `GET /health` — Service status check
+- `POST /simulate` — Run full economic simulation
+- *(Optional)* `POST /simulate/compare` — Compare agents (if enabled)
 
 ---
 
-### 2️⃣ Run Simulation
-`POST /simulate`
+## 🏗 System Architecture
 
-Runs a full economic simulation under configurable shock and policy parameters.
+Frontend (Vercel – React/Next.js)  
+⬇  
+Live API Calls  
+⬇  
+FastAPI Backend (Render)  
+⬇  
+Multi-Agent Economic Simulator  
+⬇  
+Structured JSON Output  
+⬇  
+Dynamic Visualization
 
 ---
 
-## 📦 Sample Simulation Request
+## 🔄 Simulation Modes
 
-```json
-{
-  "seed": 7,
-  "n_firms": 3,
-  "horizon": 36,
-  "shock": {
-    "type": "lithium_supply",
-    "magnitude": 0.45,
-    "duration": 10,
-    "start": 8
-  },
-  "rules": {
-    "tariff": 0.08,
-    "route_capacity": 0.7,
-    "storage_cap": 1.2,
-    "demand_elasticity": 1.1
-  },
-  "agent": {
-    "type": "heuristic"
-  }
-}
-```
-## 📊 Simulation Response Structure
+### 1️⃣ Demo Mode
+Loads pre-generated simulation outputs from:
 
-The API returns a JSON object containing:
+- `/public/data/baseline.json`
+- `/public/data/rnn_test.json`
 
-t → Time steps
+Ensures offline functionality and reliable demonstrations.
 
-prices → Price trajectories per firm
+---
 
-production → Production levels per firm
+### 2️⃣ Live Mode
+Sends real-time simulation requests to:
 
-sales → Sales per firm
+POST https://lmass-economic-simulator.onrender.com/simulate
 
-inventory → Inventory levels per firm
 
-market → Market-level aggregates
+Users can modify:
 
-metrics → Stability, welfare, cartel likelihood
+- Shock magnitude, duration, start
+- Tariff rate
+- Route capacity
+- Storage cap
+- Demand elasticity
+- Horizon
+- Number of firms
+- Agent type (heuristic / rnn)
 
-cartel → Cartel signal over time
+Results are computed live and returned as structured JSON.
 
-config → Scenario configuration
+---
 
-debug → Debug metadata
+## 📊 Output Structure
 
-## 🧠 Key Features
+The simulation returns:
 
-Partial observability with noisy supply signals
+- `t` — timesteps
+- `prices` — per-firm price trajectories
+- `production` — per-firm production levels
+- `sales` — per-firm sales
+- `inventory` — per-firm inventory levels
+- `market` — aggregate market variables
+- `metrics` — stability, welfare, cartel likelihood
+- `cartel` — cartel signal over time
+- `config` — scenario configuration
+- `debug` — additional runtime info (if available)
 
-Supply shock simulation (lithium crisis scenarios)
+All charts dynamically adapt to returned JSON keys.
 
-Market clearing and price competition
+---
 
-Cartel detection metrics
+## 🎯 Project Vision
 
-Policy testing (tariffs, route constraints, storage limits)
+Economic Shaper enables strategic policy testing under supply shocks.
 
-RNN-based belief inference agent
+Instead of relying on static assumptions, users can simulate:
 
-Heuristic baseline agents
+- Tariff hikes
+- Route disruptions
+- Severe supply shocks
+- Agent strategy differences
 
-Domain randomization for training
+And instantly observe:
 
-FastAPI REST endpoints
+- Price volatility
+- Production collapse or stabilization
+- Cartel emergence risk
+- Market stability shifts
 
-🛡 CORS Configuration
+This provides a safe experimentation environment for industrial and policy decision-making.
 
-CORS middleware is enabled to allow frontend browser-based API calls.
+---
 
-## ⚡ Performance
+## 🚀 Status
 
-36-period rollout: <1 second
+- ✅ Backend deployed and operational
+- ✅ Frontend deployed on Vercel
+- ✅ Live API integration working
+- ✅ Demo fallback implemented
+- ✅ Dynamic charts (no hardcoded data)
 
-RNN training (CPU): ~2–3 minutes
-
-Memory usage: <500MB
-
-Fully compatible with Kaggle + Render
-
-## 📌 Project Purpose
-
-This simulator enables:
-
-Strategic policy testing before real-world rollout
-
-Detection of cartel formation under supply stress
-
-Stabilization of industrial markets during shocks
-
-Evaluation of regulatory interventions
+Production-ready interactive simulation platform.
