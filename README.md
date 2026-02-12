@@ -59,7 +59,7 @@ Runs a full economic simulation under configurable shock and policy parameters.
     "type": "heuristic"
   }
 }
-
+```
 📊 Simulation Response Structure
 
 The API returns a JSON object containing:
